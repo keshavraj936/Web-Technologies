@@ -1,32 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Technologies Experiments</title>
+    <title>Web Technology Experiments</title>
+    <style>
+        /* ── Reset & Base ─────────────────────────────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Page Title Banner ────────────────────────── */
+        .page-title {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 48px 24px 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .page-title p.subtitle {
+            font-size: 0.95rem;
+            color: #a0b4cc;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Main Content ─────────────────────────────── */
+        main {
+            flex: 1;
+            max-width: 1050px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        /* ── About Section ────────────────────────────── */
+        #about {
+            background: #ffffff;
+            border-left: 5px solid #0f3460;
+            border-radius: 8px;
+            padding: 28px 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        #about h2 {
+            font-size: 1.3rem;
+            color: #0f3460;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #about p {
+            line-height: 1.75;
+            color: #555;
+            font-size: 0.97rem;
+        }
+
+        /* ── Experiments Section ──────────────────────── */
+        #experiments h2 {
+            font-size: 1.3rem;
+            color: #0f3460;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #0f3460;
+        }
+
+        /* ── Table ────────────────────────────────────── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
+        }
+
+        thead tr {
+            background: linear-gradient(90deg, #0f3460, #16213e);
+            color: #ffffff;
+        }
+
+        thead th {
+            padding: 15px 18px;
+            text-align: left;
+            font-size: 0.9rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #eef3fb;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: #d6e4f7;
+            transition: background-color 0.2s ease;
+        }
+
+        tbody td {
+            padding: 14px 18px;
+            font-size: 0.92rem;
+            color: #444;
+            vertical-align: top;
+            border-bottom: 1px solid #e0e8f0;
+            line-height: 1.6;
+        }
+
+        /* Experiment label pill */
+        tbody td:first-child {
+            font-weight: 700;
+            color: #0f3460;
+            white-space: nowrap;
+        }
+
+        /* Project name */
+        tbody td:nth-child(2) {
+            font-weight: 600;
+            color: #1a1a2e;
+            white-space: nowrap;
+        }
+
+        /* ── View Link ────────────────────────────────── */
+        tbody td a {
+            display: inline-block;
+            background: #0f3460;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 7px 16px;
+            border-radius: 5px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        tbody td a:hover {
+            background: #e94560;
+            transform: translateY(-1px);
+        }
+
+        /* ── Footer ───────────────────────────────────── */
+        footer {
+            background: #1a1a2e;
+            color: #8899aa;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <h1>Web Technologies Lab Experiments</h1>
-        <nav>
-            <ul>
-                <li><a href="experiment1.html">Experiment 1</a></li>
-                <li><a href="experiment2.html">Experiment 2</a></li>
-                <li><a href="experiment3.html">Experiment 3</a></li>
-                <li><a href="experiment4.html">Experiment 4</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <!-- Banner -->
+    <div class="page-title">
+        <h1>Web Technology Experiments</h1>
+        <p class="subtitle">Semester 4 &mdash; Practical Projects</p>
+    </div>
 
     <main>
-        <section>
-            <h2>Welcome</h2>
-            <p>Select an experiment from the navigation menu above to view the details.</p>
+
+        <!-- About -->
+        <section id="about">
+            <h2>About This Page</h2>
+            <p>A collection of Web Technology course experiments covering HTML and CSS fundamentals.</p>
         </section>
+
+        <!-- Experiments Table -->
+        <section id="experiments">
+            <h2>Experiments Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Experiment</th>
+                        <th>Project</th>
+                        <th>Description</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Exp 1</td>
+                        <td>Portfolio Website</td>
+                        <td>A basic portfolio website built with HTML only.</td>
+                        <td><a href="experiment1/experiment1.html" target="_blank">View &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>Exp 2</td>
+                        <td>E-Commerce Website</td>
+                        <td>A simple e-commerce site with product pages and cart, built in HTML.</td>
+                        <td><a href="experiment2/experiment2.html" target="_blank">View &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>Exp 3</td>
+                        <td>Portfolio with CSS</td>
+                        <td>Portfolio website enhanced with modern CSS styling and responsive layout.</td>
+                        <td><a href="experiment3/experiment3.html" target="_blank">View &rarr;</a></td>
+                    </tr>
+                    <tr>
+                        <td>Exp 4</td>
+                        <td>E-Commerce with CSS</td>
+                        <td>E-commerce site styled with CSS — colors, layout, and mobile responsiveness.</td>
+                        <td><a href="experiment4/experiment4.html" target="_blank">View &rarr;</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2024 Web Technologies Lab</p>
+        <p>&copy; 2026 Web Technology Labs by Keshav Raj Shah</p>
     </footer>
+
 </body>
+
 </html>
