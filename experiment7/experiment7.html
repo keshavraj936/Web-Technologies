@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling - Students</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 860px;
+      overflow: hidden;
+    }
+
+    /* ── Top Banner ─────────────────────────── */
+    .banner {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 32px 36px 28px;
+      color: #fff;
+    }
+
+    .banner h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .banner p {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── Controls ───────────────────────────── */
+    .controls {
+      padding: 20px 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 180px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #333;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .search-box input:focus {
+      border-color: #667eea;
+    }
+
+    .search-box::before {
+      content: '🔍';
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+    }
+
+    .dept-select {
+      padding: 10px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #333;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .dept-select:focus {
+      border-color: #764ba2;
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.15s, box-shadow 0.3s;
+      letter-spacing: 0.3px;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-capitalize {
+      background: linear-gradient(135deg, #667eea, #5a67d8);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
+    }
+
+    .btn-capitalize:hover {
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn-lower {
+      background: linear-gradient(135deg, #764ba2, #6b46a0);
+      box-shadow: 0 4px 15px rgba(118, 75, 162, 0.35);
+    }
+
+    .btn-lower:hover {
+      box-shadow: 0 6px 20px rgba(118, 75, 162, 0.5);
+    }
+
+    .btn-topper {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      box-shadow: 0 4px 15px rgba(245, 87, 108, 0.35);
+    }
+
+    .btn-topper:hover {
+      box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+    }
+
+    /* ── Table ──────────────────────────────── */
+    .table-area {
+      padding: 0 36px 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      margin-top: 10px;
+    }
+
+    thead th {
+      padding: 12px 18px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #999;
+      text-align: left;
+    }
+
+    thead th:last-child {
+      text-align: center;
+    }
+
+    tbody tr {
+      background: #fafafa;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+    }
+
+    tbody tr:hover {
+      background: #f0edff;
+      transform: scale(1.005);
+      box-shadow: 0 4px 18px rgba(102, 126, 234, 0.1);
+    }
+
+    tbody td {
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      color: #555;
+    }
+
+    tbody td:first-child {
+      border-radius: 12px 0 0 12px;
+      font-weight: 600;
+      color: #333;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    tbody td:first-child::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ddd;
+      transition: background 0.3s;
+    }
+
+    tbody tr:hover td:first-child::before {
+      background: #667eea;
+    }
+
+    tbody td:last-child {
+      border-radius: 0 12px 12px 0;
+      text-align: center;
+    }
+
+    /* Dept pills */
+    .dept {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+    }
+
+    .dept-cse {
+      background: #e8ecff;
+      color: #5a67d8;
+    }
+
+    .dept-ece {
+      background: #f3e8ff;
+      color: #8b5cf6;
+    }
+
+    .dept-me {
+      background: #fff3e0;
+      color: #e67e22;
+    }
+
+    /* Score badge */
+    .score {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .score-high {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      color: #065f46;
+    }
+
+    .score-mid {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .score-low {
+      background: linear-gradient(135deg, #fccb90, #f093fb);
+      color: #6b21a8;
+    }
+
+    /* Topper row */
+    tbody tr.topper {
+      background: linear-gradient(90deg, #fff7ed, #fef3c7, #fff7ed);
+      box-shadow: 0 0 0 2px #f59e0b, 0 4px 18px rgba(245, 158, 11, 0.15);
+    }
+
+    tbody tr.topper td:first-child::before {
+      content: '👑';
+      width: auto;
+      height: auto;
+      background: none;
+      font-size: 0.8rem;
+      left: 6px;
+    }
+
+    /* No results */
+    .empty-msg {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .empty-msg span {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ── Responsive ─────────────────────────── */
+    @media (max-width: 640px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      .controls {
+        flex-direction: column;
+        padding: 16px 20px;
+      }
+
+      .search-box {
+        min-width: 100%;
+      }
+
+      .action-btns {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .table-area {
+        padding: 0 16px 20px;
+      }
+
+      .banner {
+        padding: 24px 20px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+
+    <div class="banner">
+      <h1>Students</h1>
+      <p>Experiment 7 &mdash; Event Handling Mechanisms</p>
+    </div>
+
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Search student..." oninput="filterTable()">
+      </div>
+
+      <select class="dept-select" id="deptFilter" onchange="filterTable()">
+        <option value="all">All Departments</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="ME">ME</option>
+      </select>
+
+      <div class="action-btns">
+        <button class="action-btn btn-capitalize" onclick="changeName('upper')">Capitalize</button>
+        <button class="action-btn btn-lower" onclick="changeName('lower')">Lower</button>
+        <button class="action-btn btn-topper" onclick="highlightTopper()">Topper</button>
+      </div>
+    </div>
+
+    <div class="table-area">
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr>
+            <td>KESHAV</td>
+            <td><span class="dept dept-cse">CSE</span></td>
+            <td><span class="score">82</span></td>
+          </tr>
+          <tr>
+            <td>ANISHA</td>
+            <td><span class="dept dept-cse">CSE</span></td>
+            <td><span class="score">91</span></td>
+          </tr>
+          <tr>
+            <td>DIPESH</td>
+            <td><span class="dept dept-ece">ECE</span></td>
+            <td><span class="score">76</span></td>
+          </tr>
+          <tr>
+            <td>PRIYA</td>
+            <td><span class="dept dept-ece">ECE</span></td>
+            <td><span class="score">88</span></td>
+          </tr>
+          <tr>
+            <td>MANISH</td>
+            <td><span class="dept dept-me">ME</span></td>
+            <td><span class="score">69</span></td>
+          </tr>
+          <tr>
+            <td>SNEHA</td>
+            <td><span class="dept dept-me">ME</span></td>
+            <td><span class="score">95</span></td>
+          </tr>
+          <tr>
+            <td>BIKASH</td>
+            <td><span class="dept dept-cse">CSE</span></td>
+            <td><span class="score">73</span></td>
+          </tr>
+          <tr>
+            <td>ROSHNI</td>
+            <td><span class="dept dept-ece">ECE</span></td>
+            <td><span class="score">84</span></td>
+          </tr>
+          <tr>
+            <td>SUJAN</td>
+            <td><span class="dept dept-me">ME</span></td>
+            <td><span class="score">78</span></td>
+          </tr>
+          <tr>
+            <td>ASMITA</td>
+            <td><span class="dept dept-cse">CSE</span></td>
+            <td><span class="score">89</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="empty-msg" id="emptyMsg"><span>🔎</span>No students found.</div>
+    </div>
+
+  </div>
+
+  <script>
+    // Assign score colors on load
+    (function () {
+      document.querySelectorAll('.score').forEach(function (el) {
+        var val = parseInt(el.textContent);
+        if (val >= 85) el.classList.add('score-high');
+        else if (val >= 75) el.classList.add('score-mid');
+        else el.classList.add('score-low');
+      });
+    })();
+
+    function filterTable() {
+      var search = document.getElementById('search').value.toLowerCase();
+      var dept = document.getElementById('deptFilter').value;
+      var rows = document.querySelectorAll('#tableBody tr');
+      var count = 0;
+
+      rows.forEach(function (row) {
+        var name = row.cells[0].textContent.toLowerCase();
+        var rowDept = row.querySelector('.dept').textContent;
+        var nameMatch = name.indexOf(search) !== -1;
+        var deptMatch = dept === 'all' || rowDept === dept;
+        var show = nameMatch && deptMatch;
+        row.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+
+      document.getElementById('emptyMsg').style.display = count === 0 ? 'block' : 'none';
+    }
+
+    function changeName(type) {
+      document.querySelectorAll('#tableBody tr td:first-child').forEach(function (td) {
+        var text = td.textContent;
+        td.textContent = type === 'upper' ? text.toUpperCase() : text.toLowerCase();
+      });
+    }
+
+    function highlightTopper() {
+      var rows = document.querySelectorAll('#tableBody tr');
+      var maxScore = -1;
+      var topRow = null;
+
+      rows.forEach(function (row) {
+        row.classList.remove('topper');
+        var s = parseInt(row.querySelector('.score').textContent);
+        if (row.style.display !== 'none' && s > maxScore) {
+          maxScore = s;
+          topRow = row;
+        }
+      });
+
+      if (topRow) {
+        topRow.classList.add('topper');
+        topRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  </script>
+</body>
+
+</html>
