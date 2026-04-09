@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  description TEXT,
+  image_url VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100),
+  email VARCHAR(100),
+  gender VARCHAR(10),
+  phone VARCHAR(15),
+  password VARCHAR(255)
+);

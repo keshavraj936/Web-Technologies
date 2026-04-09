@@ -1,0 +1,38 @@
+/* ecommerce-style.css - shared style for experiment9 */
+body {font-family: 'Segoe UI', Arial, sans-serif; background: #f5f6fa; margin: 0; color: #222;}
+header {text-align: center; padding: 32px 0 12px 0; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.03);}
+main {margin: 24px 8vw;}
+.banner {background: linear-gradient(120deg, #e0e0e0 0%, #f5f6fa 100%); color: #222; padding: 56px 20px; text-align: center; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);}
+footer {text-align: center; background: #fff; padding: 24px 0; margin-top: 48px; color: #888; font-size: 1rem;}
+.site-title {margin: 0; font-size: 2.1rem; letter-spacing: 0.5px; color: #1f2937;}
+.tagline {margin: 8px 0 0; color: #6b7280;}
+
+.nav {background: #f8f9fa; padding: 16px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02);}
+.nav a {color: #444; text-decoration: none; margin: 0 20px; font-size: 1.08rem; font-weight: 500; transition: color 0.2s;}
+.nav a:hover {color: #111; text-decoration: underline;}
+
+.form-container {background: #fff; padding: 36px 44px; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); width: 100%; max-width: 420px; margin: 48px auto;}
+.form-container h2 {margin-bottom: 28px; color: #222;}
+.form-container label {display: block; margin-bottom: 7px; font-weight: 500; color: #555;}
+.form-container input, .form-container select, .form-container textarea {width: 100%; padding: 12px 14px; margin-bottom: 22px; border: 1px solid #d1d5db; border-radius: 7px; font-size: 15px; background: #f8f9fa; color: #222; transition: border 0.2s;}
+.form-container input:focus, .form-container select:focus, .form-container textarea:focus {outline: none; border-color: #888; background: #fff;}
+.form-container button {width: 100%; padding: 13px; background: #222; color: #fff; border: none; border-radius: 7px; font-size: 17px; font-weight: 500; cursor: pointer; transition: background 0.2s;}
+.form-container button:hover {background: #444;}
+.alert-error {background: #f3f4f6; border: 1px solid #d1d5db; color: #111827; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px;}
+.alert-success {background: #f9fafb; border: 1px solid #d1d5db; color: #111827; padding: 12px; border-radius: 8px; margin-bottom: 12px;}
+.muted-link {color: #374151;}
+.card-actions {margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap;}
+.card-actions a {color: #111827;}
+
+.table-container {background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); padding: 32px; margin: 48px auto; max-width: 1000px;}
+table {width: 100%; border-collapse: collapse; margin: 0 auto;}
+th, td {padding: 14px 18px; border-bottom: 1px solid #ececec; text-align: left;}
+th {background: #f5f6fa; color: #222; font-weight: 600;}
+tr:last-child td {border-bottom: none;}
+img {max-width: 80px; max-height: 80px; border-radius: 8px;}
+
+@media (max-width: 600px) {
+  .form-container, .table-container {padding: 18px 6vw;}
+  main {margin: 12px 2vw;}
+  .banner {padding: 32px 8px;}
+}
